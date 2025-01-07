@@ -1,13 +1,35 @@
 name: Manual Approval Example
 
 on:
-  workflow_dispatch: # Trigger workflow manually from GitHub UI
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
 
 jobs:
-  approval_job:
-    name: Job Requiring Manual Approval
+  log-the-inputs:
     runs-on: ubuntu-latest
-    environment: staginig # Associate the job with the environment
     steps:
-      - name: Approval Needed
-        run: echo "Waiting for manual approval to continue"
+      - run: |
+          echo "Log level: $LEVEL"
+          echo "Tags: $TAGS"
+          echo "Environment: $ENVIRONMENT"
+        env:
+          LEVEL: ${{ inputs.logLevel }}
+          TAGS: ${{ inputs.tags }}
+          ENVIRONMENT: ${{ inputs.environment }}
