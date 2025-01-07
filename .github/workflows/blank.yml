@@ -1,20 +1,24 @@
-name: Workflow with Approval
+name: Workflow with Custom Action Required
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  approval:
     runs-on: ubuntu-latest
-    environment: staging  # Replace with your environment name
+    environment: staging  # Requires manual approval
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Wait for manual approval
+        run: echo "Manual approval received, simulating action required"
 
-      - name: Build application
-        run: echo "Building the application"
-
-      - name: Deploy to environment
-        run: echo "Deploying to staging environment"
+      - name: Trigger custom check with action required
+        run: |
+          curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          -d '{
+                "name": "Custom Approval Required",
+                "head_sha": "${{ github.sha }}",
+                "status": "completed",
+                "conclusion": "action_required"
+              }' \
+          https://api.github.com/repos/${{ github.repository }}/check-runs
