@@ -1,7 +1,10 @@
 name: Manual Approval Example
 
 on:
-  workflow_dispatch: # Trigger workflow manually from GitHub UI
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   approval_job:
