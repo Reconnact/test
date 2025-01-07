@@ -1,4 +1,4 @@
-name: Parent Workflow
+name: Workflow with Approval
 
 on:
   push:
@@ -6,8 +6,15 @@ on:
       - main
 
 jobs:
-  trigger:
+  deploy:
     runs-on: ubuntu-latest
+    environment: staging  # Replace with your environment name
     steps:
-      - name: Trigger child workflow
-        run: echo "Parent workflow completed"
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build application
+        run: echo "Building the application"
+
+      - name: Deploy to environment
+        run: echo "Deploying to staging environment"
