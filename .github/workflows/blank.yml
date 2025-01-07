@@ -7,7 +7,7 @@ jobs:
   approval_job:
     name: Job Requiring Manual Approval
     runs-on: ubuntu-latest
-    environment: staging # Associate the job with the environment
+    environment: main # Associate the job with the environment
     steps:
       - name: Approval Needed
         run: echo "Waiting for manual approval to continue"
