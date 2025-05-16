@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  approval:
+  test:
     runs-on: flow-runner-SSTXmXJBcv3t
     steps:
       - name: Sleep
