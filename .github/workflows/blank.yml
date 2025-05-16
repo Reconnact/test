@@ -8,9 +8,8 @@ jobs:
   approval:
     runs-on: flow-runner-SSTXmXJBcv3t
     steps:
-      - name: Wait for manual approval
-        run: echo "Manual approval received, simulating action required"
-
+      - name: Sleep
+        run: sleep 60s
       - name: Trigger custom check with action required
         run: |
           curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
