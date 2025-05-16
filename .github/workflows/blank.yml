@@ -9,15 +9,4 @@ jobs:
     runs-on: flow-runner-SSTXmXJBcv3t
     steps:
       - name: Sleep
-        run: sleep 60s
-      - name: Trigger custom check with action required
-        run: |
-          curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          -H "Accept: application/vnd.github.v3+json" \
-          -d '{
-                "name": "Custom Approval Required",
-                "head_sha": "${{ github.sha }}",
-                "status": "completed",
-                "conclusion": "action_required"
-              }' \
-          https://api.github.com/repos/${{ github.repository }}/check-runs
+        run: sleep 60
