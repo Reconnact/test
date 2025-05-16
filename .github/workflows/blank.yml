@@ -6,7 +6,7 @@ on:
 jobs:
   approval:
     runs-on: flow-runner-SSTXmXJBcv3t
-    environment: staging  # Requires manual approval
+    environment: main  # Requires manual approval
     steps:
       - name: Wait for manual approval
         run: echo "Manual approval received, simulating action required"
