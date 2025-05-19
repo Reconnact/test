@@ -9,4 +9,14 @@ jobs:
     runs-on: flow-runner-SSTXmXJBcv3t
     steps:
       - name: Sleep
-        run: sleep 60
+        run: sleep 5
+      - name: Sleep 2
+        run: sleep 5  
+      - name: Sleep 3
+        run: sleep 2
+      - name: Sleep 4
+        run: sleep 5  
+      - name: Sleep 5
+        run: sleep 5
+      - name: Sleep 6
+        run: sleep 5  
