@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    runs-on: flow-runner-SSTXmXJBcv3t
+    runs-on: self-hosted
     steps:
       - name: Sleep
         run: sleep 60
