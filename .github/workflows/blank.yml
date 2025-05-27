@@ -5,22 +5,7 @@ on:
 name: Test Workflow
 jobs:
   example1:
-    runs-on: [self-hosted, flow-runner-SSTXmXJBcv3t]
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - run: echo "😴 Time for a nap, sleeping for 1 minute" && sleep 60
-
-  example2:
-    runs-on: [self-hosted, flow-runner-SSTXmXJBcv3t]
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - run: echo "😴 Time for a nap, sleeping for 30 seconds" && sleep 30
-
-  example3_depends:
-    runs-on: [self-hosted, flow-runner-SSTXmXJBcv3t]
-    needs: [example1, example2]
+    runs-on: [flow-runner-gyEqLRJKae67]
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
