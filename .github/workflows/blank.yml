@@ -5,7 +5,7 @@ on:
 name: Test Workflow
 jobs:
   example1:
-    runs-on: [flow-runner-BlgUWDdRc1jJ]
+    runs-on: [flow-runner-xiItjx7mszVa]
     steps:
       - run: echo "Done"
       - run: sleep 10
