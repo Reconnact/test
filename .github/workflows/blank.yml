@@ -7,9 +7,7 @@ jobs:
   example1:
     runs-on: [flow-runner-BlgUWDdRc1jJ]
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - run: echo "😴 Time for a nap, sleeping for 1 minute" && sleep 60
+      - run: echo "Done"
   example2:
     runs-on: [flow-runner-BlgUWDdRc1jJ]
     steps:
