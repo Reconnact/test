@@ -8,9 +8,9 @@ jobs:
     runs-on: [flow-runner-xiItjx7mszVa]
     steps:
       - run: echo "Done"
-      - run: sleep 10
+      - run: sleep 30
   example2:
     runs-on: [flow-runner-xiItjx7mszVa]
     steps:
-      - run: sleep 10
+      - run: sleep 30
       - run: echo "Done"
