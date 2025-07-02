@@ -5,19 +5,19 @@ on:
 name: Test Workflow
 jobs:
   example1:
-    runs-on: [flow-runner-xiItjx7mszVa]
+    runs-on: [flow-runner-Kb2lEX8KewyV]
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
 
   example2:
-    runs-on: [flow-runner-xiItjx7mszVa]
+    runs-on: [flow-runner-Kb2lEX8KewyV]
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
 
   example3_depends:
-    runs-on: [flow-runner-xiItjx7mszVa]
+    runs-on: [flow-runner-Kb2lEX8KewyV]
     needs: [example1, example2]
     steps:
       - name: Check out repository code
