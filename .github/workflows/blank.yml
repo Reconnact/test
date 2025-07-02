@@ -9,14 +9,12 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - run: echo "😴 Time for a nap, sleeping for 1 minute" && sleep 60
 
   example2:
     runs-on: [flow-runner-xiItjx7mszVa]
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - run: echo "😴 Time for a nap, sleeping for 30 seconds" && sleep 30
 
   example3_depends:
     runs-on: [flow-runner-xiItjx7mszVa]
@@ -24,4 +22,4 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - run: echo "😴 Time for a nap, sleeping for 1 minute" && sleep 60
+      - run: echo "😴 Time for a nap, sleeping for 20s" && sleep 20
