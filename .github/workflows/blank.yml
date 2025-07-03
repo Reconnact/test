@@ -14,3 +14,8 @@ jobs:
     steps:
       - run: sleep 20
       - run: echo "Done"
+  example3:
+    runs-on: [flow-runner-xiItjx7mszVa]
+    steps:
+      - run: sleep 20
+      - run: echo "Done"   
