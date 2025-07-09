@@ -1,31 +1,22 @@
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "test_dependency" ]
 
 name: Test Workflow
 jobs:
-  example1:
-    runs-on: [flow-runner-xiItjx7mszVa]
+  job1:
+    runs-on: flow-runner-UvFEA7msrdXN
     steps:
-      - run: echo "Done"
-      - run: sleep 10
-  # example2:
-  #   runs-on: [flow-runner-xiItjx7mszVa]
-  #   steps:
-  #     - run: sleep 10
-  #     - run: echo "Done"
-  # example3:
-  #   runs-on: [flow-runner-xiItjx7mszVa]
-  #   steps:
-  #     - run: sleep 10
-  #     - run: echo "Done"   
-  # example4:
-  #   runs-on: [flow-runner-xiItjx7mszVa]
-  #   steps:
-  #     - run: sleep 10
-  #     - run: echo "Done"   
-  # example5:
-  #   runs-on: [flow-runner-xiItjx7mszVa]
-  #   steps:
-  #     - run: sleep 10
-  #     - run: echo "Done"   
+      - name: Step that always fails
+        run: |
+          echo "This job will now fail."
+          exit 1
+
+  job2:
+    needs: job1
+    runs-on: flow-runner-UvFEA7msrdXN
+    steps:
+      - name: Wait for 10 seconds
+        run: |
+          echo "Waiting 10 seconds..."
+          sleep 10
