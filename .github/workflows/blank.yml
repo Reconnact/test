@@ -7,10 +7,9 @@ jobs:
   job1:
     runs-on: flow-runner-UvFEA7msrdXN
     steps:
-      - name: Step that always fails
-        run: |
-          echo "This job will now fail."
-          exit 1
+      - name: Explode early
+        if: ${{ contains(needs.nonexistent_job.result, 'success') }}
+        run: echo "this will never run"
 
   job2:
     needs: job1
