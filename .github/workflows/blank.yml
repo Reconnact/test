@@ -6,9 +6,10 @@ name: Test Workflow
 jobs:
   job1:
     runs-on: flow-runner-UvFEA7msrdXN
+    env:
+      SHOULD_NOT_EXIST: ${{ secrets.NON_EXISTENT_SECRET }}  # This secret is not defined
     steps:
       - name: Explode early
-        if: ${{ contains(needs.nonexistent_job.result, 'success') }}
         run: echo "this will never run"
 
   job2:
