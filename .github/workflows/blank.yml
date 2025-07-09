@@ -6,11 +6,11 @@ name: Test Workflow
 jobs:
   job1:
     runs-on: flow-runner-UvFEA7msrdXN
-    env:
-      SHOULD_NOT_EXIST: ${{ secrets.NON_EXISTENT_SECRET }}  # This secret is not defined
     steps:
-      - name: Explode early
-        run: echo "this will never run"
+      - name: Step that always fails
+        run: |
+          echo "This job will now fail."
+          exit 1  # Explicit failure
 
   job2:
     needs: job1
