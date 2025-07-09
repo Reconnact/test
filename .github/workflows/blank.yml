@@ -4,8 +4,14 @@ on:
 
 name: Test Workflow
 jobs:
-   approve:
-    runs-on: flow-runner-PGOTeiRw1P4h
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running build step"
+
+  approve:
+    needs: build
+    runs-on: ubuntu-latest
     environment:
       name: manual-approval  # 👈 this triggers manual review
     steps:
