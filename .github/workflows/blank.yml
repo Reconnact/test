@@ -15,14 +15,15 @@ jobs:
       - id: out
         shell: bash
         run: |
-          python - <<'PY'
-          import json, os
-          first  = {"shard": list(range(0,250))}
-          second = {"shard": list(range(250,500))}
-          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
-              f.write(f'first={json.dumps(first)}\n')
-              f.write(f'second={json.dumps(second)}\n')
-          PY
+          mklist() { # mklist 0 249  -> 0,1,2,...,249
+            awk -v s="$1" -v e="$2" 'BEGIN{for(i=s;i<=e;i++){printf i; if(i<e) printf ","}}'
+          }
+          first='{"shard":['"$(mklist 0 249)"']}'
+          second='{"shard":['"$(mklist 250 499)"']}'
+          {
+            echo "first=$first"
+            echo "second=$second"
+          } >> "$GITHUB_OUTPUT"
 
   run-a:
     needs: gen-matrices
