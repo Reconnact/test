@@ -5,7 +5,7 @@ on:
 name: Test Workflow
 jobs:
   job1:
-    runs-on: flow-runner-UvFEA7msrdXN
+    runs-on: flow-runner-RqbKVQ9uMj5q
     steps:
       - name: Step that always fails
         run: |
@@ -13,7 +13,7 @@ jobs:
 
   job2:
     needs: job1
-    runs-on: flow-runner-UvFEA7msrdXN
+    runs-on: flow-runner-RqbKVQ9uMj5q
     if: false
     steps:
       - name: Wait for 10 seconds
