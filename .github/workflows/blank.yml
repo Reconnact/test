@@ -5,7 +5,7 @@ on:
 name: Test Workflow
 jobs:
   job1:
-    runs-on: flow-runner-UvFEA7msrdXN
+    runs-on: flow-runner-RqbKVQ9uMj5q
     steps:
       - name: Step that always fails
         run: |
