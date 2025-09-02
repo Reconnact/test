@@ -1,18 +1,53 @@
+# .github/workflows/parallel-500.yml
+name: Parallel (500x)
+
 on:
   push:
-    branches: [ "test_action_required" ]
+    branches: [ "test_matrix" ]
 
-name: Test Workflow
 jobs:
-  neutral_job:
+  gen-matrices:
     runs-on: flow-runner-RqbKVQ9uMj5q
+    outputs:
+      first:  ${{ steps.out.outputs.first }}
+      second: ${{ steps.out.outputs.second }}
     steps:
-      - name: Exit with code 78
-        run: exit 78
-  approve:
-    needs: neutral_job
+      - id: out
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os
+          first  = {"shard": list(range(0,250))}
+          second = {"shard": list(range(250,500))}
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f'first={json.dumps(first)}\n')
+              f.write(f'second={json.dumps(second)}\n')
+          PY
+
+  run-a:
+    needs: gen-matrices
     runs-on: flow-runner-RqbKVQ9uMj5q
-    environment:
-      name: staging  # 👈 this triggers manual review
+    strategy:
+      fail-fast: false
+      max-parallel: 250
+      matrix: ${{ fromJSON(needs.gen-matrices.outputs.first) }}
     steps:
-      - run: echo "This runs after manual approval"
+      - uses: actions/checkout@v4
+      - run: echo "Hello World"
+        env:
+          SHARD_INDEX: ${{ matrix.shard }}
+          SHARD_TOTAL: 500
+
+  run-b:
+    needs: gen-matrices
+    runs-on: flow-runner-RqbKVQ9uMj5q
+    strategy:
+      fail-fast: false
+      max-parallel: 250
+      matrix: ${{ fromJSON(needs.gen-matrices.outputs.second) }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Hello World"
+        env:
+          SHARD_INDEX: ${{ matrix.shard }}
+          SHARD_TOTAL: 500
