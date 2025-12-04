@@ -2,7 +2,7 @@ on:
   push:
     branches: [ "main" ]
 
-name: Test Workflow
+name: Test Workflow shut down
 jobs:
   example1:
     runs-on: [flow-runner-6B76HZLXgfo6]
