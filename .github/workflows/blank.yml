@@ -2,7 +2,7 @@ on:
   push:
     branches: [ "main" ]
 
-name: Test Workflow timeout
+name: Test Workflow timeout 1
 jobs:
   example1:
     runs-on: [flow-runner-rlEzIbtn1dWz]
