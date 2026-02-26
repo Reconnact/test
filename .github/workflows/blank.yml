@@ -5,27 +5,27 @@ on:
 name: Test Workflow timeout
 jobs:
   example1:
-    runs-on: [flow-runner-X1BcFt11nvJQ]
+    runs-on: [flow-runner-rlEzIbtn1dWz]
     steps:
       - run: echo "Done"
       - run: sleep 10
   example2:
-     runs-on: [flow-runner-X1BcFt11nvJQ]
+     runs-on: [flow-runner-rlEzIbtn1dWz]
      steps:
        - run: sleep 10
        - run: echo "Done"
   example3:
-     runs-on: [flow-runner-X1BcFt11nvJQ]
+     runs-on: [flow-runner-rlEzIbtn1dWz]
      steps:
        - run: sleep 10
        - run: echo "Done"   
   example4:
-     runs-on: [flow-runner-X1BcFt11nvJQ]
+     runs-on: [flow-runner-rlEzIbtn1dWz]
      steps:
        - run: sleep 10
        - run: echo "Done"   
   example5:
-     runs-on: [flow-runner-X1BcFt11nvJQ]
+     runs-on: [flow-runner-rlEzIbtn1dWz]
      steps:
        - run: sleep 10
        - run: echo "Done"   
